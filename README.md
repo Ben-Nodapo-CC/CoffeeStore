@@ -23,7 +23,7 @@
       </ul>
     </li>
   </ol>
-/details>
+</details>
 
 
 
