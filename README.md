@@ -60,7 +60,7 @@ Implement a service that simulates selling coffee. Please take the following poi
 * [RabbitMQ](https://www.rabbitmq.com/)
 * [Docker](https://www.docker.com/)
 
-Both microservices were built in ASP.NEt Core with .Net 6. 
+Both microservices were built in ASP.NET Core with .Net 6. 
 
 The database of choice for the Coffe Store is a MSSQL Database. 
 That could have been any SQL Database (for example a PostgreSQL). Even a NoSQL DB like MongoDB could have been used. A SQL DB was chosen over it, in order to leave the possibility to store user credentials in the same DB.
