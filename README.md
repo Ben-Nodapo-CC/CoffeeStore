@@ -47,7 +47,7 @@ Microservice 2 (Coffee Store)
 Implement a service that simulates selling coffee. Please take the following points into consideration for the implementation:
 
 * connect a database to your service in order to manage the coffee in stock.
-* provide an interface of your choice (e.g. a REST-interface), through which customers could inform themselves over the items in stock or buy coffee. 
+* provide an interface of your choice (e.g. a REST-interface), through which customers could inform themselves about the items in stock or buy coffee. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
