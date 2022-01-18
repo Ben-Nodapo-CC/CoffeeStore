@@ -17,6 +17,12 @@
     </li>
     <li><a href="#usage">Usage</a></li>
   </ol>
+  <li>
+      <a href="#final-thoughts">Final Thoughts</a>
+      <ul>
+        <li><a href="#deployment">Deployment</a></li>
+      </ul>
+    </li>
 </details>
 
 
