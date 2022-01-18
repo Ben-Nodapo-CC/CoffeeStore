@@ -1,0 +1,76 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    container_name: MsSqlServer
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Nodapo_CC
+    ports:
+    - "1433:1433"
+    volumes:
+     - db-data:/var/lib/mssql/data
+    networks:
+     - coffeestore-network
+
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: rabbitmq
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+    volumes:
+    - rabbitmq-data:/var/lib/rabbitmq
+    - rabbitmq-log:/var/log/rabbitmq
+    networks:
+    - rabbitmq-network
+
+  coffeefactory:
+    image: coffeefactory
+    container_name: coffeefactory
+    restart: on-failure
+    depends_on:
+      - rabbitmq
+    build:
+      context: ./
+      dockerfile: CoffeeFactory/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "85:80"
+    networks:
+      - rabbitmq-network
+
+  coffeestore:
+    image: coffeestore
+    container_name: coffeestore
+    restart: on-failure
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    build:
+      context: ./
+      dockerfile: CoffeeStore/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "84:80"
+    networks:
+      - coffeestore-network
+      - rabbitmq-network
+
+networks:
+  coffeestore-network:
+    name: coffeestore-network
+    ipam:
+      config:
+        - subnet: 174.16.0.0/16
+  rabbitmq-network:
+    name: rabbitmq-network
+
+volumes:
+  db-data:
+  rabbitmq-data:
+  rabbitmq-log:
