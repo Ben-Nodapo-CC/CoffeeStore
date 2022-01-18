@@ -161,3 +161,5 @@ To test the missed messages being resent, do the following:
 ### Deployment
 
 Since this application is already containerized and orchestrated locally with docker-compose, the next logical step would be to deploy it in kubernetes. This is the industry standard and can be used to make this application more fault-tolerant, more scalable and use resources optimally among other things.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
